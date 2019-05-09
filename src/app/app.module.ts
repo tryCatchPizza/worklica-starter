@@ -13,6 +13,9 @@ import { ConfigService } from './shared/services/config.service';
 import { ApplicationSettings } from './shared/models/application-settings';
 import { AuthenticationService } from './shared/services/auth.service';
 import { AuthInterceptor } from './shared/services/http-interceptor.service';
+import { AlertComponent } from './alert/alert.component';
+import { AlertService } from './shared/services/alert.service';
+import { HttpErrorInterceptor } from './shared/services/http-error-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,7 @@ import { AuthInterceptor } from './shared/services/http-interceptor.service';
     HomeComponent,
     LoginComponent,
     UsersComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +58,13 @@ import { AuthInterceptor } from './shared/services/http-interceptor.service';
       },
       deps: [AuthenticationService],
       multi: true
-    }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true
+    },
+    AlertService
   ],
   bootstrap: [AppComponent]
 })
