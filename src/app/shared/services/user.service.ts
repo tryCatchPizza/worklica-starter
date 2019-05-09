@@ -11,6 +11,7 @@ import { ApplicationSettings } from '../models/application-settings';
 export class UserService {
 
     apiPath: string;
+    
     constructor(
         private http: HttpClient,
         private appSettings: ApplicationSettings
