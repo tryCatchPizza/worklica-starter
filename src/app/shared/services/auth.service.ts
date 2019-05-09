@@ -35,8 +35,13 @@ export class AuthenticationService {
         }
     }
 
-    getUserInfoFromToken(): string {
-        return this.jwtHelper.decodeToken(this.cookieService.get('access-token')).role;
+    getToken(): string {
+        return this.cookieService.get('access-token');
+    }
+
+    getRoleFromToken(): Array<string> {
+        const decodedToken = this.jwtHelper.decodeToken(this.getToken());
+        return decodedToken.role;
     }
 
     logout() {
