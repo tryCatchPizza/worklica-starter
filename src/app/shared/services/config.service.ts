@@ -11,7 +11,7 @@ export class ConfigService {
 
     load() {
         return new Promise((resolve: () => void, reject: (reason: any) => void) => {
-            const promise = this.http.get('../../worklica.config.json').toPromise();
+            const promise = this.http.get('worklica.config.json').toPromise();
             promise.then((data: ApplicationSettings) => {
                 this.config = data;
                 resolve();
