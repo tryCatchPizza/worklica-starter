@@ -28,8 +28,8 @@ export class UsersComponent implements OnInit {
       this.users = users;
       this.userService.getRoles().subscribe(roles => {
         this.roles = roles;
-      })
-    })
+      });
+    });
   }
-
 }
+
