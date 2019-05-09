@@ -3,39 +3,26 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { ApplicationSettings } from '../models/application-settings';
 
 @Injectable({
     providedIn: 'root'
 })
 export class UserService {
 
-    users: User[] = [
-        {
-            username: 'admin',
-            email: 'admin@worklica.hr',
-            password: 'admin',
-            role: 'Administrator'
-        },
-        {
-            username: 'user',
-            email: 'user@worklica.hr',
-            password: 'user',
-            role: 'User'
-        }
-    ];
-
-    roles = ['Administrator', 'User'];
-
-
-    constructor(http: HttpClient) {
-
+    apiPath: string;
+    constructor(
+        private http: HttpClient,
+        private appSettings: ApplicationSettings
+    ) {
+        this.apiPath = this.appSettings.webapi;
     }
 
     getUsers(): Observable<Array<User>> {
-        return of(this.users).pipe(delay(1000));
+        return this.http.get<User[]>(this.apiPath + 'users');
     }
 
     getRoles(): Observable<Array<string>> {
-        return of(this.roles);
+        return this.http.get<Array<string>>(this.apiPath + 'roles');
     }
 }
