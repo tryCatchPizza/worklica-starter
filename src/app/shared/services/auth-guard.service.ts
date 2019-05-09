@@ -12,8 +12,6 @@ export class AuthGuard implements CanActivate {
         private authService: AuthenticationService
     ) { }
 
-    // TODO: Check if user logged in... Otherwise default route doesn't work
-
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         const requiredRole = route.data.role;
         const userRole = this.authService.getRoleFromToken();
