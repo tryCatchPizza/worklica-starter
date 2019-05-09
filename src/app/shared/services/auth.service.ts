@@ -40,8 +40,12 @@ export class AuthenticationService {
     }
 
     getRoleFromToken(): Array<string> {
-        const decodedToken = this.jwtHelper.decodeToken(this.getToken());
-        return decodedToken.role;
+        if (!this.cookieService.get('access-token')) {
+            this.router.navigate(['/login']);
+        } else {
+            const decodedToken = this.jwtHelper.decodeToken(this.getToken());
+            return decodedToken.role;
+        }
     }
 
     logout() {
