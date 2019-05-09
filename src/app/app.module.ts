@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { UsersComponent } from './users/users.component';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { ConfigService } from './shared/services/config.service';
@@ -22,7 +21,6 @@ import { HttpErrorInterceptor } from './shared/services/http-error-interceptor.s
     AppComponent,
     HomeComponent,
     LoginComponent,
-    UsersComponent,
     AlertComponent,
   ],
   imports: [
