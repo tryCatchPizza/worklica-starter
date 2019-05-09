@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         const requiredRole = route.data.role;
-        const userRole = this.authService.getUserInfoFromToken();
+        const userRole = this.authService.getRoleFromToken();
         if (!requiredRole) {
             return true;
         }
