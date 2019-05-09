@@ -27,7 +27,7 @@ export class UserService {
     roles = ['Administrator', 'User'];
 
 
-    constructor(http: HttpClient) {
+    constructor(private http: HttpClient) {
 
     }
 
