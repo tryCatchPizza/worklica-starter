@@ -7,10 +7,12 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { UsersComponent } from './users/users.component';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { ConfigService } from './shared/services/config.service';
 import { ApplicationSettings } from './shared/models/application-settings';
+import { AuthenticationService } from './shared/services/auth.service';
+import { AuthInterceptor } from './shared/services/http-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,14 @@ import { ApplicationSettings } from './shared/models/application-settings';
         return configService.config;
       },
       deps: [ConfigService, HttpClient]
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useFactory: (authService: AuthenticationService) => {
+        return new AuthInterceptor(authService);
+      },
+      deps: [AuthenticationService],
+      multi: true
     }
   ],
   bootstrap: [AppComponent]
