@@ -11,6 +11,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { ConfigService } from './shared/services/config.service';
 import { ApplicationSettings } from './shared/models/application-settings';
+import { AlertService } from './shared/services/alert.service';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ApplicationSettings } from './shared/models/application-settings';
       },
       deps: [ConfigService, HttpClient]
     }
+    AlertService
   ],
   bootstrap: [AppComponent]
 })

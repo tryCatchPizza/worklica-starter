@@ -26,4 +26,12 @@ export class UserService {
     getRoles(): Observable<Array<string>> {
         return this.http.get<Array<string>>(this.apiPath + 'roles');
     }
+
+    saveUser(user: User) {
+
+    }
+
+    editUser(user: User) {
+
+    }
 }
