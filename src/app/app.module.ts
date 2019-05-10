@@ -55,7 +55,7 @@ import { AlertService } from './shared/services/alert.service';
       },
       deps: [AuthenticationService],
       multi: true
-    }
+    },
     AlertService
   ],
   bootstrap: [AppComponent]

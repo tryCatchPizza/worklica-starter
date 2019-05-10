@@ -34,8 +34,10 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  addUser() {
-    
+  async addUser() {
+    const users = await this.userService.saveUser(this.model);
+    this.users = users;
+    this.model = new User();
   }
 
   editUser(user: User) {
@@ -43,12 +45,11 @@ export class UsersComponent implements OnInit {
     this.model = JSON.parse(JSON.stringify(user));
   }
 
-  save() {
-    
-  }
-
-  deleteUser(user: User) {
-    
+  async save() {
+    const users = await this.userService.editUser(this.model);
+    this.users = users;
+    this.model = new User();
+    this.isEditMode = false;
   }
 
   cancel() {
