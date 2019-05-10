@@ -38,4 +38,12 @@ export class UserService {
     getRoles(): Observable<Array<string>> {
         return of(this.roles);
     }
+
+    saveUser(user: User) {
+
+    }
+
+    editUser(user: User) {
+
+    }
 }

@@ -31,5 +31,27 @@ export class UsersComponent implements OnInit {
       });
     });
   }
+
+  addUser() {
+    
+  }
+
+  editUser(user: User) {
+    this.isEditMode = true;
+    this.model = JSON.parse(JSON.stringify(user));
+  }
+
+  save() {
+    
+  }
+
+  deleteUser(user: User) {
+    
+  }
+
+  cancel() {
+    this.model = new User();
+    this.isEditMode = false;
+  }
 }
 
