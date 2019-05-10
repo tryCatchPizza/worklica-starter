@@ -10,7 +10,7 @@ import { ApplicationSettings } from '../../../shared/models/application-settings
 export class UserService {
 
     apiPath: string;
-    
+
     constructor(
         private http: HttpClient,
         private appSettings: ApplicationSettings
@@ -26,11 +26,13 @@ export class UserService {
         return this.http.get<Array<string>>(this.apiPath + 'roles');
     }
 
-    saveUser(user: User) {
-
+    async saveUser(user: User): Promise<any> {
+        let response = await this.http.post(this.apiPath + 'users', user).toPromise();
+        return response;
     }
 
-    editUser(user: User) {
-
+    async editUser(user: User): Promise<any> {
+        let response = await this.http.put(this.apiPath + 'users', user).toPromise();
+        return response;
     }
 }
