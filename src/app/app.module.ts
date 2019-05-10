@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { UsersComponent } from './users/users.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { AlertService } from './shared/services/alert.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CookieService } from 'ngx-cookie-service';
     AppRoutingModule
   ],
   providers: [
-    CookieService
+    CookieService,
+    AlertService
   ],
   bootstrap: [AppComponent]
 })
