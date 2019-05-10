@@ -13,6 +13,7 @@ import { ConfigService } from './shared/services/config.service';
 import { ApplicationSettings } from './shared/models/application-settings';
 import { AuthenticationService } from './shared/services/auth.service';
 import { AuthInterceptor } from './shared/services/http-interceptor.service';
+import { AlertService } from './shared/services/alert.service';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { AuthInterceptor } from './shared/services/http-interceptor.service';
       deps: [AuthenticationService],
       multi: true
     }
+    AlertService
   ],
   bootstrap: [AppComponent]
 })

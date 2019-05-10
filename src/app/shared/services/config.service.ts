@@ -10,12 +10,10 @@ export class ConfigService {
     constructor(private http: HttpClient) { }
 
     load() {
-        return new Promise((resolve: () => void, reject: (reason: any) => void) => {
-            const promise = this.http.get('worklica.config.json').toPromise();
-            promise.then((data: ApplicationSettings) => {
-                this.config = data;
-                resolve();
-            }).catch(error => reject(error));
-        });
+        const promise = this.http.get('worklica.config.json').toPromise();
+        promise.then((data: ApplicationSettings) => {
+            this.config = data;
+        }).catch((e) => console.log(e));
+        return promise;
     }
 }

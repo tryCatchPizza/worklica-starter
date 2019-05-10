@@ -11,6 +11,7 @@ import { ApplicationSettings } from '../models/application-settings';
 export class UserService {
 
     apiPath: string;
+    
     constructor(
         private http: HttpClient,
         private appSettings: ApplicationSettings
@@ -24,5 +25,13 @@ export class UserService {
 
     getRoles(): Observable<Array<string>> {
         return this.http.get<Array<string>>(this.apiPath + 'roles');
+    }
+
+    saveUser(user: User) {
+
+    }
+
+    editUser(user: User) {
+
     }
 }
